@@ -12,8 +12,8 @@
     <div class="form-group">
         <label for="isCompleted">isCompleted</label>
         <select required ngModel name="isCompleted" #isCompleted="ngModel" class="form-control">
-            <option value="true">yes</option>
-            <option value="false">No</option>
+            <option [ngValue]="true">yes</option>
+            <option [ngValue]="false">No</option>
         </select>
     </div>
 

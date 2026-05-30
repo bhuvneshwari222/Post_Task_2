@@ -1,0 +1,23 @@
+<div class="row" *ngIf="getPostArr.length > 0; else : noPost">
+    <div class="col-md-4 mt-4" *ngFor="let post of getPostArr; trackBy : trackByPostID">
+        <mat-card class="h-100">
+            <mat-card-title>{{post.title}}</mat-card-title>
+            <mat-card-content>
+                <strong
+                [ngClass]="{
+                    'text-danger' : !post.isCompleted,
+                    'text-success' : post.isCompleted  
+                }"
+                >{{post.isCompleted ? 'completed' : 'Not Completed'}}</strong>
+                <p> {{post.content}}</p>
+            </mat-card-content>
+            <mat-card-actions class="d-flex justify-content-between">
+                <button (click)="onEdit(post)" mat-raised-button color="primary">Edit</button>
+                <button (click)="onRemove(post.postID)" mat-raised-button color="warn">Remove</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+<ng-template #noPost>
+    <p class="alert alert-info">No Post!!!</p>
+</ng-template>

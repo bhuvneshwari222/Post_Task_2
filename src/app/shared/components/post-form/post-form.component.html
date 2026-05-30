@@ -1,0 +1,24 @@
+<form #postForm="ngForm" (ngSubmit)="onSubmitPost()">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input required ngModel name="title" #title="ngModel" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea required ngModel name="content" #content="ngModel" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="isCompleted">isCompleted</label>
+        <select required ngModel name="isCompleted" #isCompleted="ngModel" class="form-control">
+            <option value="true">yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <button [disabled]="postForm.invalid" type="submit" class="w-100" *ngIf="!isInEditMode" mat-raised-button
+        color="primary">Add Post</button>
+    <button (click)="updatePost()" [disabled]="postForm.invalid" type="button" class="w-100" *ngIf="isInEditMode"
+        mat-raised-button color="accent">Update Post</button>
+</form>
